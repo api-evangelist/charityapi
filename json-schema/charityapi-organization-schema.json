@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://charityapi.org/schemas/organization.json",
+  "title": "CharityAPI Organization",
+  "description": "A US nonprofit organization record sourced from the IRS Business Master File.",
+  "type": "object",
+  "required": ["ein", "name"],
+  "properties": {
+    "ein": {
+      "type": "string",
+      "pattern": "^[0-9]{9}$",
+      "description": "Employer Identification Number."
+    },
+    "name": { "type": "string" },
+    "ico": { "type": "string" },
+    "street": { "type": "string" },
+    "city": { "type": "string" },
+    "state": { "type": "string" },
+    "zip": { "type": "string" },
+    "subsection": { "type": "string" },
+    "affiliation": { "type": "string" },
+    "classification": { "type": "string" },
+    "ruling": { "type": "string" },
+    "deductibility": { "type": "string" },
+    "foundation": { "type": "string" },
+    "activity": { "type": "string" },
+    "status": { "type": "string" },
+    "tax_period": { "type": "string" },
+    "asset_amt": { "type": "integer" },
+    "income_amt": { "type": "integer" },
+    "revenue_amt": { "type": "integer" },
+    "ntee_cd": { "type": "string" }
+  }
+}

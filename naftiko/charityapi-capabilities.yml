@@ -1,0 +1,66 @@
+name: charityapi-capabilities
+description: >-
+  Naftiko sandbox capabilities exposed by the CharityAPI integration. These
+  capabilities let agents resolve EINs to nonprofit records, verify 501c3
+  status, and power donation autocomplete experiences.
+provider: charityapi
+version: '1.0'
+capabilities:
+  - id: charityapi.organization.lookup
+    name: Look up nonprofit by EIN
+    description: >-
+      Retrieve a single nonprofit organization record from the IRS Business
+      Master File using its Employer Identification Number.
+    operationId: getOrganizationByEin
+    inputs:
+      - name: ein
+        type: string
+        required: true
+        description: Nine-digit IRS Employer Identification Number.
+    outputs:
+      - name: organization
+        type: object
+        description: Organization record including name, address, NTEE code, and finances.
+    tags:
+      - lookup
+      - nonprofit
+      - irs
+  - id: charityapi.public_charity.verify
+    name: Verify 501c3 public charity status
+    description: >-
+      Check whether an EIN belongs to an IRS-recognized public charity, used
+      to confirm tax-deductibility before processing donations.
+    operationId: publicCharityCheck
+    inputs:
+      - name: ein
+        type: string
+        required: true
+        description: Nine-digit IRS Employer Identification Number.
+    outputs:
+      - name: public_charity
+        type: boolean
+        description: True when the EIN is a 501c3 public charity.
+    tags:
+      - verification
+      - compliance
+      - 501c3
+  - id: charityapi.organization.autocomplete
+    name: Autocomplete nonprofit names
+    description: >-
+      Typeahead search across IRS-registered nonprofit names with typo
+      tolerance, intended to power donation forms and giving platforms.
+      Requires a paid CharityAPI subscription.
+    operationId: autocompleteOrganizations
+    inputs:
+      - name: term
+        type: string
+        required: true
+        description: Partial organization name to match.
+    outputs:
+      - name: matches
+        type: array
+        description: Ranked list of matching organizations.
+    tags:
+      - search
+      - autocomplete
+      - donations

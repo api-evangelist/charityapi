@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://charityapi.org/schemas/public-charity-check.json",
+  "title": "CharityAPI Public Charity Check",
+  "description": "Result returned by the public_charity_check endpoint indicating whether an EIN is a 501c3.",
+  "type": "object",
+  "required": ["ein", "public_charity"],
+  "properties": {
+    "ein": {
+      "type": "string",
+      "pattern": "^[0-9]{9}$"
+    },
+    "public_charity": {
+      "type": "boolean"
+    }
+  }
+}

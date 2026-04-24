@@ -1,0 +1,57 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "charityapi": "https://charityapi.org/schemas/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Organization": {
+      "@id": "schema:NGO",
+      "@context": {
+        "ein": "charityapi:ein",
+        "name": "schema:legalName",
+        "ico": "charityapi:inCareOf",
+        "street": "schema:streetAddress",
+        "city": "schema:addressLocality",
+        "state": "schema:addressRegion",
+        "zip": "schema:postalCode",
+        "subsection": "charityapi:irsSubsection",
+        "classification": "charityapi:irsClassification",
+        "ruling": {
+          "@id": "charityapi:irsRuling",
+          "@type": "xsd:date"
+        },
+        "deductibility": "charityapi:deductibility",
+        "foundation": "charityapi:foundationCode",
+        "activity": "charityapi:activityCode",
+        "status": "charityapi:taxExemptStatus",
+        "tax_period": "charityapi:taxPeriod",
+        "asset_amt": {
+          "@id": "charityapi:totalAssets",
+          "@type": "xsd:integer"
+        },
+        "income_amt": {
+          "@id": "charityapi:totalIncome",
+          "@type": "xsd:integer"
+        },
+        "revenue_amt": {
+          "@id": "charityapi:totalRevenue",
+          "@type": "xsd:integer"
+        },
+        "ntee_cd": "charityapi:nteeCode"
+      }
+    },
+
+    "PublicCharityCheck": {
+      "@id": "charityapi:PublicCharityCheck",
+      "@context": {
+        "ein": "charityapi:ein",
+        "public_charity": {
+          "@id": "charityapi:isPublicCharity",
+          "@type": "xsd:boolean"
+        }
+      }
+    }
+  }
+}

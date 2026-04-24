@@ -1,42 +1,66 @@
 # CharityAPI (charityapi)
-CharityAPI is a software platform that provides users with access to information and data on various charitable organizations around the world. This platform offers a comprehensive database of nonprofits, NGOs, and community groups, allowing users to easily search, select, and donate to causes that align with their values and interests. CharityAPI also offers a range of tools and services to help organizations maximize their impact, such as fundraising management, donor management, and reporting capabilities. With CharityAPI, users can make a difference in the world by supporting causes that matter to them and connecting with reputable charitable organizations.
+
+CharityAPI provides a simple REST API for data about US nonprofits and charities sourced directly from IRS filings. Developers can retrieve nonprofit records by EIN, verify whether an organization is a public charity (501c3) with tax-deductible status, and integrate organization name autocomplete to power donation, fundraising, vetting, and compliance workflows.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/charityapi/refs/heads/main/apis.yml)
 
 ## Scope
 
-- **Type:** Index 
-- **Position:** Consumer 
-- **Access:** 3rd-Party 
+- **Type:** Index
+- **Position:** Consumer
+- **Access:** 3rd-Party
 
-## Tags:
+## Tags
 
- - Charities, Non-Profits
+- 501c3, Charities, Donations, EIN, IRS, Non-Profits, Tax Compliance, Verification
 
 ## Timestamps
 
-- **Created:** 2025-03-01 
-- **Modified:** 2025-03-01 
+- **Created:** 2025-03-01
+- **Modified:** 2026-04-23
 
 ## APIs
 
 ### CharityAPI
-CharityAPI is a platform that provides developers with easy access to a database of charitable organizations around the world. Through this API, developers can quickly and efficiently retrieve information about various nonprofits, including their mission, impact, and contact details. This tool allows developers to integrate charitable organizations into their applications, websites, and platforms, making it easier for users to discover and support causes they care about. CharityAPI aims to streamline the process of connecting donors with charities, ultimately increasing support for important causes and making a positive impact on communities worldwide.
 
-**Human URL:** [ https://docs.charityapi.org/main]( https://docs.charityapi.org/main)
+CharityAPI provides REST endpoints for looking up US nonprofit organizations by EIN, performing public charity 501c3 verification checks, and powering autocomplete search across the IRS Business Master File. The API supports donation platforms, fundraising tools, and compliance workflows that need authoritative tax-status data.
 
+**Human URL:** [https://charityapi.org/](https://charityapi.org/)
 
-#### Tags:
+**Base URL:** `https://api.charityapi.org/api`
 
- - Charities, Non-Profits
+#### Tags
+
+- 501c3, Charities, EIN, IRS, Non-Profits, Verification
 
 #### Properties
 
-- [Documentation]( https://docs.charityapi.org/main)
+- [Documentation](https://docs.charityapi.org/)
+- [Getting Started](https://docs.charityapi.org/main)
+- [Authentication](https://docs.charityapi.org/authentication)
+- [Organizations Endpoints](https://docs.charityapi.org/organizations)
+- [Pricing](https://www.charityapi.org/pricing)
+- [Sign Up](https://www.charityapi.org/get-started)
+- [OpenAPI](openapi/charityapi-openapi.yml)
+- [Spectral Rules](spectral/charityapi-spectral.yml)
+- [Naftiko Capabilities](naftiko/charityapi-capabilities.yml)
+
+## Common Properties
+
+- [Website](https://www.charityapi.org/)
+- [Documentation](https://docs.charityapi.org/)
+- [Pricing](https://www.charityapi.org/pricing)
+- [Blog](https://www.charityapi.org/blog)
+- [Sign Up](https://www.charityapi.org/get-started)
+- [Support](https://www.charityapi.org/contact)
+- [Terms of Service](https://www.charityapi.org/terms)
+- [Privacy Policy](https://www.charityapi.org/privacy)
+- [JSON-LD Context](json-ld/charityapi-context.jsonld)
+- [Organization JSON Schema](json-schema/charityapi-organization-schema.json)
+- [Public Charity Check JSON Schema](json-schema/charityapi-public-charity-check-schema.json)
 
 ## Maintainers
 
 **FN:** Kin Lane
 
-**Email:** info@apievangelist.com
-
+**Email:** kin@apievangelist.com

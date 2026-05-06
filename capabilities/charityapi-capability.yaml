@@ -1,0 +1,177 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: CharityAPI
+  description: REST API providing access to US nonprofit and charity data sourced from IRS filings. Supports lookup of organizations
+    by EIN, public charity (501c3) verification checks, and name-based autocomplete for donation, fundraising, and compliance
+    workflows.
+  tags:
+  - Charityapi
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: charityapi
+    baseUri: https://api.charityapi.org/api
+    description: CharityAPI HTTP API.
+    authentication:
+      type: apikey
+      in: header
+      name: apikey
+      value: '{{CHARITYAPI_TOKEN}}'
+    resources:
+    - name: organizations-ein
+      path: /organizations/{ein}
+      operations:
+      - name: getorganizationbyein
+        method: GET
+        description: Get organization by EIN
+        inputParameters:
+        - name: ein
+          in: path
+          type: string
+          required: true
+          description: Employer Identification Number for the organization.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: organizations-autocomplete-term
+      path: /organizations/autocomplete/{term}
+      operations:
+      - name: autocompleteorganizations
+        method: GET
+        description: Autocomplete organization names
+        inputParameters:
+        - name: term
+          in: path
+          type: string
+          required: true
+          description: Partial organization name to match.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: public-charity-check-ein
+      path: /public_charity_check/{ein}
+      operations:
+      - name: publiccharitycheck
+        method: GET
+        description: Check public charity status
+        inputParameters:
+        - name: ein
+          in: path
+          type: string
+          required: true
+          description: Employer Identification Number to verify.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: charityapi-rest
+    description: REST adapter for CharityAPI.
+    resources:
+    - path: /organizations/{ein}
+      name: getorganizationbyein
+      operations:
+      - method: GET
+        name: getorganizationbyein
+        description: Get organization by EIN
+        call: charityapi.getorganizationbyein
+        with:
+          ein: rest.ein
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /organizations/autocomplete/{term}
+      name: autocompleteorganizations
+      operations:
+      - method: GET
+        name: autocompleteorganizations
+        description: Autocomplete organization names
+        call: charityapi.autocompleteorganizations
+        with:
+          term: rest.term
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /public_charity_check/{ein}
+      name: publiccharitycheck
+      operations:
+      - method: GET
+        name: publiccharitycheck
+        description: Check public charity status
+        call: charityapi.publiccharitycheck
+        with:
+          ein: rest.ein
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: charityapi-mcp
+    transport: http
+    description: MCP adapter for CharityAPI for AI agent use.
+    tools:
+    - name: getorganizationbyein
+      description: Get organization by EIN
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: charityapi.getorganizationbyein
+      with:
+        ein: tools.ein
+      inputParameters:
+      - name: ein
+        type: string
+        description: Employer Identification Number for the organization.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: autocompleteorganizations
+      description: Autocomplete organization names
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: charityapi.autocompleteorganizations
+      with:
+        term: tools.term
+      inputParameters:
+      - name: term
+        type: string
+        description: Partial organization name to match.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: publiccharitycheck
+      description: Check public charity status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: charityapi.publiccharitycheck
+      with:
+        ein: tools.ein
+      inputParameters:
+      - name: ein
+        type: string
+        description: Employer Identification Number to verify.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    CHARITYAPI_TOKEN: CHARITYAPI_TOKEN

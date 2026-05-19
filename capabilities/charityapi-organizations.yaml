@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: CharityAPI — Organizations
+  description: 'CharityAPI — Organizations. 1 operations. Lead operation: Get organization by EIN. Self-contained Naftiko
+    capability covering one Charityapi business surface.'
+  tags:
+  - Charityapi
+  - Organizations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CHARITYAPI_API_KEY: CHARITYAPI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: charityapi-organizations
+    baseUri: https://api.charityapi.org/api
+    description: CharityAPI — Organizations business capability. Self-contained, no shared references.
+    resources:
+    - name: organizations-ein
+      path: /organizations/{ein}
+      operations:
+      - name: getorganizationbyein
+        method: GET
+        description: Get organization by EIN
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ein
+          in: path
+          type: string
+          description: Employer Identification Number for the organization.
+          required: true
+    authentication:
+      type: apikey
+      key: apikey
+      value: '{{env.CHARITYAPI_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: charityapi-organizations-rest
+    port: 8080
+    description: REST adapter for CharityAPI — Organizations. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/organizations/{ein}
+      name: organizations-ein
+      description: REST surface for organizations-ein.
+      operations:
+      - method: GET
+        name: getorganizationbyein
+        description: Get organization by EIN
+        call: charityapi-organizations.getorganizationbyein
+        with:
+          ein: rest.ein
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: charityapi-organizations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for CharityAPI — Organizations. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-organization-ein
+      description: Get organization by EIN
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: charityapi-organizations.getorganizationbyein
+      with:
+        ein: tools.ein
+      outputParameters:
+      - type: object
+        mapping: $.

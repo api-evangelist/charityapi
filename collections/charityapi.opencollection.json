@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CharityAPI",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get organization by EIN",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.charityapi.org/api/organizations/:ein",
+            "params": [
+              {
+                "name": "ein",
+                "value": "",
+                "type": "path",
+                "description": "Employer Identification Number for the organization."
+              }
+            ]
+          },
+          "docs": "Retrieve a single nonprofit organization record from the IRS Business Master File by Employer Identification Number. Returns charities, political organizations, insurance organizations, and other nonprofits."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Autocomplete",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Autocomplete organization names",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.charityapi.org/api/organizations/autocomplete/:term",
+            "params": [
+              {
+                "name": "term",
+                "value": "",
+                "type": "path",
+                "description": "Partial organization name to match."
+              }
+            ]
+          },
+          "docs": "Search the IRS Business Master File for organizations whose name matches the supplied term. Designed for typeahead UIs and supports typo tolerance. Available to paying accounts only."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Public Charity Check",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check public charity status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.charityapi.org/api/public_charity_check/:ein",
+            "params": [
+              {
+                "name": "ein",
+                "value": "",
+                "type": "path",
+                "description": "Employer Identification Number to verify."
+              }
+            ]
+          },
+          "docs": "Returns a boolean indicating whether the supplied EIN belongs to an IRS public charity, and therefore qualifies as a 501c3 with tax-deductible donation status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

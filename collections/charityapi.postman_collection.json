@@ -1,0 +1,748 @@
+{
+  "item": [
+    {
+      "id": "bd6c7d92-1654-4598-af79-a9681acf47cf",
+      "name": "Organizations",
+      "description": {
+        "content": "Look up US nonprofit organization records by EIN",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "df65dc1b-347d-4595-bd52-06d324d80528",
+          "name": "Get organization by EIN",
+          "request": {
+            "name": "Get organization by EIN",
+            "description": {
+              "content": "Retrieve a single nonprofit organization record from the IRS Business Master File by Employer Identification Number. Returns charities, political organizations, insurance organizations, and other nonprofits.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":ein"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ein",
+                  "description": "(Required) Employer Identification Number for the organization."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "10c2daff-a425-49f0-9040-8286cafe75f2",
+              "name": "Organization record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":ein"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ein",
+                      "description": "(Required) Employer Identification Number for the organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ein\": \"string\",\n  \"name\": \"string\",\n  \"ico\": \"string\",\n  \"street\": \"string\",\n  \"city\": \"string\",\n  \"state\": \"string\",\n  \"zip\": \"string\",\n  \"group\": \"string\",\n  \"subsection\": \"string\",\n  \"affiliation\": \"string\",\n  \"classification\": \"string\",\n  \"ruling\": \"string\",\n  \"deductibility\": \"string\",\n  \"foundation\": \"string\",\n  \"activity\": \"string\",\n  \"organization\": \"string\",\n  \"status\": \"string\",\n  \"tax_period\": \"string\",\n  \"asset_cd\": \"string\",\n  \"income_cd\": \"string\",\n  \"filing_req_cd\": \"string\",\n  \"pf_filing_req_cd\": \"string\",\n  \"acct_pd\": \"string\",\n  \"asset_amt\": 8034,\n  \"income_amt\": 6871,\n  \"revenue_amt\": 3489,\n  \"ntee_cd\": \"string\",\n  \"sort_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a348e242-d2f8-4984-b79d-16eda10dfc3d",
+              "name": "Missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":ein"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ein",
+                      "description": "(Required) Employer Identification Number for the organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fd153d8e-0748-4410-bb2d-459666bb0749",
+              "name": "Organization not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":ein"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ein",
+                      "description": "(Required) Employer Identification Number for the organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4061aa37-528a-44b3-9ab2-7ef16f47c491",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":ein"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ein",
+                      "description": "(Required) Employer Identification Number for the organization."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "af40923a-7721-48a7-bdf3-6757fca53f7c",
+      "name": "Public Charity Check",
+      "description": {
+        "content": "Verify whether an EIN is a tax-deductible public charity",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6708b2af-ace7-4332-aa9f-5951328d5dec",
+          "name": "Check public charity status",
+          "request": {
+            "name": "Check public charity status",
+            "description": {
+              "content": "Returns a boolean indicating whether the supplied EIN belongs to an IRS public charity, and therefore qualifies as a 501c3 with tax-deductible donation status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "public_charity_check",
+                ":ein"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ein",
+                  "description": "(Required) Employer Identification Number to verify."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b356cec0-b2df-4fe5-9bcc-492c8fe53790",
+              "name": "Public charity check result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public_charity_check",
+                    ":ein"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ein",
+                      "description": "(Required) Employer Identification Number to verify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ein\": \"string\",\n  \"public_charity\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "077f8a02-1537-4db5-8075-1689efa1de15",
+              "name": "Missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public_charity_check",
+                    ":ein"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ein",
+                      "description": "(Required) Employer Identification Number to verify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "35df8d7e-3441-4dca-8c5f-5c1c7086d8a5",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public_charity_check",
+                    ":ein"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ein",
+                      "description": "(Required) Employer Identification Number to verify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "78270490-aace-42cf-a399-cf785fdf1b18",
+      "name": "Autocomplete",
+      "description": {
+        "content": "Typeahead search across nonprofit organization names",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "77b28f6e-4929-4507-92e8-ea5b213f5e8f",
+          "name": "Autocomplete organization names",
+          "request": {
+            "name": "Autocomplete organization names",
+            "description": {
+              "content": "Search the IRS Business Master File for organizations whose name matches the supplied term. Designed for typeahead UIs and supports typo tolerance. Available to paying accounts only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                "autocomplete",
+                ":term"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "term",
+                  "description": "(Required) Partial organization name to match."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "694ec13e-8f85-44b7-b378-9f4104d3d416",
+              "name": "Matching organization suggestions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    "autocomplete",
+                    ":term"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "term",
+                      "description": "(Required) Partial organization name to match."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"ein\": \"string\",\n    \"name\": \"string\",\n    \"ico\": \"string\",\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"group\": \"string\",\n    \"subsection\": \"string\",\n    \"affiliation\": \"string\",\n    \"classification\": \"string\",\n    \"ruling\": \"string\",\n    \"deductibility\": \"string\",\n    \"foundation\": \"string\",\n    \"activity\": \"string\",\n    \"organization\": \"string\",\n    \"status\": \"string\",\n    \"tax_period\": \"string\",\n    \"asset_cd\": \"string\",\n    \"income_cd\": \"string\",\n    \"filing_req_cd\": \"string\",\n    \"pf_filing_req_cd\": \"string\",\n    \"acct_pd\": \"string\",\n    \"asset_amt\": 4430,\n    \"income_amt\": 9460,\n    \"revenue_amt\": 2560,\n    \"ntee_cd\": \"string\",\n    \"sort_name\": \"string\"\n  },\n  {\n    \"ein\": \"string\",\n    \"name\": \"string\",\n    \"ico\": \"string\",\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"group\": \"string\",\n    \"subsection\": \"string\",\n    \"affiliation\": \"string\",\n    \"classification\": \"string\",\n    \"ruling\": \"string\",\n    \"deductibility\": \"string\",\n    \"foundation\": \"string\",\n    \"activity\": \"string\",\n    \"organization\": \"string\",\n    \"status\": \"string\",\n    \"tax_period\": \"string\",\n    \"asset_cd\": \"string\",\n    \"income_cd\": \"string\",\n    \"filing_req_cd\": \"string\",\n    \"pf_filing_req_cd\": \"string\",\n    \"acct_pd\": \"string\",\n    \"asset_amt\": 4631,\n    \"income_amt\": 1874,\n    \"revenue_amt\": 4778,\n    \"ntee_cd\": \"string\",\n    \"sort_name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1cc4dbbd-bdad-4b62-8025-5311d15c48dc",
+              "name": "Missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    "autocomplete",
+                    ":term"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "term",
+                      "description": "(Required) Partial organization name to match."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c2dfb628-d956-4d10-b2f0-f2e754a37224",
+              "name": "Endpoint requires a paid subscription",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    "autocomplete",
+                    ":term"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "term",
+                      "description": "(Required) Partial organization name to match."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4a5fb259-0817-47bd-88e3-9f0eb1d84e32",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    "autocomplete",
+                    ":term"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "term",
+                      "description": "(Required) Partial organization name to match."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.charityapi.org/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e0ccc872-9c63-4534-9f85-a840763fb3da",
+    "name": "CharityAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing access to US nonprofit and charity data sourced from IRS filings. Supports lookup of organizations by EIN, public charity (501c3) verification checks, and name-based autocomplete for donation, fundraising, and compliance workflows.\n\nContact Support:\n Name: CharityAPI Support",
+      "type": "text/plain"
+    }
+  }
+}

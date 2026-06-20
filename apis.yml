@@ -5,7 +5,7 @@ description: >-
   Developers can retrieve nonprofit records by EIN, verify whether an organization is a public charity (501c3) with
   tax-deductible status, and integrate organization name autocomplete to power donation, vetting, and compliance
   workflows.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/charityapi/refs/heads/main/apis.yml
 type: Index
 access: 3rd-Party
@@ -29,7 +29,7 @@ apis:
       CharityAPI provides REST endpoints for looking up US nonprofit organizations by EIN, performing public charity
       501c3 verification checks, and powering autocomplete search across the IRS Business Master File. The API supports
       donation platforms, fundraising tools, and compliance workflows that need authoritative tax-status data.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://charityapi.org/
     baseURL: https://api.charityapi.org/api
     tags:

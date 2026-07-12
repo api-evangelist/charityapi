@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/charityapi-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKeyAuth
+  type: apiKey
+  in: header
+  parameter: apikey
+  description: API key issued by CharityAPI, sent in the apikey request header.
+  sources:
+  - openapi/charityapi-openapi.yml

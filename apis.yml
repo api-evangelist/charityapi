@@ -57,6 +57,10 @@ apis:
       - type: Spectral
         url: spectral/charityapi-spectral.yml
 common:
+  - type: DomainSecurity
+    url: security/charityapi-domain-security.yml
+  - type: Authentication
+    url: authentication/charityapi-authentication.yml
   - type: Website
     url: https://www.charityapi.org/
   - type: Documentation

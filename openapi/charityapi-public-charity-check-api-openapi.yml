@@ -1,0 +1,64 @@
+openapi: 3.1.0
+info:
+  title: Charity Autocomplete Public Charity Check API
+  description: REST API providing access to US nonprofit and charity data sourced from IRS filings. Supports lookup of organizations by EIN, public charity (501c3) verification checks, and name-based autocomplete for donation, fundraising, and compliance workflows.
+  version: '1.0'
+  contact:
+    name: CharityAPI Support
+    url: https://www.charityapi.org/contact
+  termsOfService: https://www.charityapi.org/terms
+servers:
+- url: https://api.charityapi.org/api
+  description: CharityAPI Production
+security:
+- apiKeyAuth: []
+tags:
+- name: Public Charity Check
+  description: Verify whether an EIN is a tax-deductible public charity
+paths:
+  /public_charity_check/{ein}:
+    get:
+      operationId: publicCharityCheck
+      summary: Check public charity status
+      description: Returns a boolean indicating whether the supplied EIN belongs to an IRS public charity, and therefore qualifies as a 501c3 with tax-deductible donation status.
+      tags:
+      - Public Charity Check
+      parameters:
+      - name: ein
+        in: path
+        required: true
+        description: Employer Identification Number to verify.
+        schema:
+          type: string
+          pattern: ^[0-9]{9}$
+      responses:
+        '200':
+          description: Public charity check result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicCharityCheck'
+        '401':
+          description: Missing or invalid API key
+        '429':
+          description: Rate limit exceeded
+components:
+  schemas:
+    PublicCharityCheck:
+      type: object
+      description: Result of a 501c3 public charity verification.
+      properties:
+        ein:
+          type: string
+        public_charity:
+          type: boolean
+          description: True when the EIN is registered as an IRS public charity.
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+      description: API key issued by CharityAPI, sent in the apikey request header.
+externalDocs:
+  description: CharityAPI Documentation
+  url: https://docs.charityapi.org/

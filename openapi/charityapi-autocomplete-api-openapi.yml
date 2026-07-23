@@ -1,0 +1,123 @@
+openapi: 3.1.0
+info:
+  title: Charity Autocomplete API
+  description: REST API providing access to US nonprofit and charity data sourced from IRS filings. Supports lookup of organizations by EIN, public charity (501c3) verification checks, and name-based autocomplete for donation, fundraising, and compliance workflows.
+  version: '1.0'
+  contact:
+    name: CharityAPI Support
+    url: https://www.charityapi.org/contact
+  termsOfService: https://www.charityapi.org/terms
+servers:
+- url: https://api.charityapi.org/api
+  description: CharityAPI Production
+security:
+- apiKeyAuth: []
+tags:
+- name: Autocomplete
+  description: Typeahead search across nonprofit organization names
+paths:
+  /organizations/autocomplete/{term}:
+    get:
+      operationId: autocompleteOrganizations
+      summary: Autocomplete organization names
+      description: Search the IRS Business Master File for organizations whose name matches the supplied term. Designed for typeahead UIs and supports typo tolerance. Available to paying accounts only.
+      tags:
+      - Autocomplete
+      parameters:
+      - name: term
+        in: path
+        required: true
+        description: Partial organization name to match.
+        schema:
+          type: string
+          minLength: 2
+      responses:
+        '200':
+          description: Matching organization suggestions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Organization'
+        '401':
+          description: Missing or invalid API key
+        '402':
+          description: Endpoint requires a paid subscription
+        '429':
+          description: Rate limit exceeded
+components:
+  schemas:
+    Organization:
+      type: object
+      description: A nonprofit organization record sourced from the IRS Business Master File.
+      properties:
+        ein:
+          type: string
+          description: Employer Identification Number.
+        name:
+          type: string
+          description: Legal organization name.
+        ico:
+          type: string
+          description: In Care Of name.
+        street:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        group:
+          type: string
+        subsection:
+          type: string
+        affiliation:
+          type: string
+        classification:
+          type: string
+        ruling:
+          type: string
+        deductibility:
+          type: string
+        foundation:
+          type: string
+        activity:
+          type: string
+        organization:
+          type: string
+        status:
+          type: string
+        tax_period:
+          type: string
+        asset_cd:
+          type: string
+        income_cd:
+          type: string
+        filing_req_cd:
+          type: string
+        pf_filing_req_cd:
+          type: string
+        acct_pd:
+          type: string
+        asset_amt:
+          type: integer
+        income_amt:
+          type: integer
+        revenue_amt:
+          type: integer
+        ntee_cd:
+          type: string
+          description: National Taxonomy of Exempt Entities code.
+        sort_name:
+          type: string
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+      description: API key issued by CharityAPI, sent in the apikey request header.
+externalDocs:
+  description: CharityAPI Documentation
+  url: https://docs.charityapi.org/

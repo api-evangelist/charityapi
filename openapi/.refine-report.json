@@ -1,0 +1,18 @@
+{
+  "provider": "charityapi",
+  "sources": [
+    "charityapi-autocomplete-api-openapi.yml",
+    "charityapi-organizations-api-openapi.yml",
+    "charityapi-public-charity-check-api-openapi.yml"
+  ],
+  "outputs": [
+    "charityapi-autocomplete-api-openapi.yml",
+    "charityapi-organizations-api-openapi.yml",
+    "charityapi-public-charity-check-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

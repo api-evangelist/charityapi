@@ -1,0 +1,203 @@
+openapi: 3.1.0
+info:
+  title: CharityAPI
+  description: >-
+    REST API providing access to US nonprofit and charity data sourced from
+    IRS filings. Supports lookup of organizations by EIN, public charity (501c3)
+    verification checks, and name-based autocomplete for donation, fundraising,
+    and compliance workflows.
+  version: '1.0'
+  contact:
+    name: CharityAPI Support
+    url: https://www.charityapi.org/contact
+  termsOfService: https://www.charityapi.org/terms
+externalDocs:
+  description: CharityAPI Documentation
+  url: https://docs.charityapi.org/
+servers:
+  - url: https://api.charityapi.org/api
+    description: CharityAPI Production
+tags:
+  - name: Organizations
+    description: Look up US nonprofit organization records by EIN
+  - name: Public Charity Check
+    description: Verify whether an EIN is a tax-deductible public charity
+  - name: Autocomplete
+    description: Typeahead search across nonprofit organization names
+security:
+  - apiKeyAuth: []
+paths:
+  /organizations/{ein}:
+    get:
+      operationId: getOrganizationByEin
+      summary: Get organization by EIN
+      description: >-
+        Retrieve a single nonprofit organization record from the IRS Business
+        Master File by Employer Identification Number. Returns charities,
+        political organizations, insurance organizations, and other nonprofits.
+      tags:
+        - Organizations
+      parameters:
+        - name: ein
+          in: path
+          required: true
+          description: Employer Identification Number for the organization.
+          schema:
+            type: string
+            pattern: '^[0-9]{9}$'
+      responses:
+        '200':
+          description: Organization record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+        '404':
+          description: Organization not found
+        '401':
+          description: Missing or invalid API key
+        '429':
+          description: Rate limit exceeded
+  /organizations/autocomplete/{term}:
+    get:
+      operationId: autocompleteOrganizations
+      summary: Autocomplete organization names
+      description: >-
+        Search the IRS Business Master File for organizations whose name
+        matches the supplied term. Designed for typeahead UIs and supports
+        typo tolerance. Available to paying accounts only.
+      tags:
+        - Autocomplete
+      parameters:
+        - name: term
+          in: path
+          required: true
+          description: Partial organization name to match.
+          schema:
+            type: string
+            minLength: 2
+      responses:
+        '200':
+          description: Matching organization suggestions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Organization'
+        '401':
+          description: Missing or invalid API key
+        '402':
+          description: Endpoint requires a paid subscription
+        '429':
+          description: Rate limit exceeded
+  /public_charity_check/{ein}:
+    get:
+      operationId: publicCharityCheck
+      summary: Check public charity status
+      description: >-
+        Returns a boolean indicating whether the supplied EIN belongs to an
+        IRS public charity, and therefore qualifies as a 501c3 with
+        tax-deductible donation status.
+      tags:
+        - Public Charity Check
+      parameters:
+        - name: ein
+          in: path
+          required: true
+          description: Employer Identification Number to verify.
+          schema:
+            type: string
+            pattern: '^[0-9]{9}$'
+      responses:
+        '200':
+          description: Public charity check result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicCharityCheck'
+        '401':
+          description: Missing or invalid API key
+        '429':
+          description: Rate limit exceeded
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+      description: API key issued by CharityAPI, sent in the apikey request header.
+  schemas:
+    Organization:
+      type: object
+      description: A nonprofit organization record sourced from the IRS Business Master File.
+      properties:
+        ein:
+          type: string
+          description: Employer Identification Number.
+        name:
+          type: string
+          description: Legal organization name.
+        ico:
+          type: string
+          description: In Care Of name.
+        street:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        group:
+          type: string
+        subsection:
+          type: string
+        affiliation:
+          type: string
+        classification:
+          type: string
+        ruling:
+          type: string
+        deductibility:
+          type: string
+        foundation:
+          type: string
+        activity:
+          type: string
+        organization:
+          type: string
+        status:
+          type: string
+        tax_period:
+          type: string
+        asset_cd:
+          type: string
+        income_cd:
+          type: string
+        filing_req_cd:
+          type: string
+        pf_filing_req_cd:
+          type: string
+        acct_pd:
+          type: string
+        asset_amt:
+          type: integer
+        income_amt:
+          type: integer
+        revenue_amt:
+          type: integer
+        ntee_cd:
+          type: string
+          description: National Taxonomy of Exempt Entities code.
+        sort_name:
+          type: string
+    PublicCharityCheck:
+      type: object
+      description: Result of a 501c3 public charity verification.
+      properties:
+        ein:
+          type: string
+        public_charity:
+          type: boolean
+          description: True when the EIN is registered as an IRS public charity.

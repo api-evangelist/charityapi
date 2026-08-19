@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Charity Autocomplete API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Autocomplete",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Autocomplete organization names",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.charityapi.org/api/organizations/autocomplete/:term",
+            "params": [
+              {
+                "name": "term",
+                "value": "",
+                "type": "path",
+                "description": "Partial organization name to match."
+              }
+            ]
+          },
+          "docs": "Search the IRS Business Master File for organizations whose name matches the supplied term. Designed for typeahead UIs and supports typo tolerance. Available to paying accounts only."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

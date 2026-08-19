@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Charity Autocomplete Public Charity Check API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Public Charity Check",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check public charity status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.charityapi.org/api/public_charity_check/:ein",
+            "params": [
+              {
+                "name": "ein",
+                "value": "",
+                "type": "path",
+                "description": "Employer Identification Number to verify."
+              }
+            ]
+          },
+          "docs": "Returns a boolean indicating whether the supplied EIN belongs to an IRS public charity, and therefore qualifies as a 501c3 with tax-deductible donation status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

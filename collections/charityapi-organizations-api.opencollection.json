@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Charity Autocomplete Organizations API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get organization by EIN",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.charityapi.org/api/organizations/:ein",
+            "params": [
+              {
+                "name": "ein",
+                "value": "",
+                "type": "path",
+                "description": "Employer Identification Number for the organization."
+              }
+            ]
+          },
+          "docs": "Retrieve a single nonprofit organization record from the IRS Business Master File by Employer Identification Number. Returns charities, political organizations, insurance organizations, and other nonprofits."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

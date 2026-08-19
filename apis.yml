@@ -34,7 +34,7 @@ tags:
   - Verification
 created: '2025-03-01'
 modified: '2026-05-19'
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 apis:
 - aid: charityapi:charityapi-autocomplete-api
   name: CharityAPI Autocomplete API

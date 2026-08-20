@@ -29,6 +29,15 @@ tags:
   - Donations
   - EIN
   - IRS
+  - Non-Profit
+  - Tax Compliance
+  - Verification
+tags_raw:
+  - 501c3
+  - Charities
+  - Donations
+  - EIN
+  - IRS
   - Non-Profits
   - Tax Compliance
   - Verification
@@ -66,6 +75,8 @@ apis:
   humanURL: https://charityapi.org/
   baseURL: https://api.charityapi.org/api
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI

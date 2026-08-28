@@ -5,6 +5,18 @@ description: >-
   Developers can retrieve nonprofit records by EIN, verify whether an organization is a public charity (501c3) with
   tax-deductible status, and integrate organization name autocomplete to power donation, vetting, and compliance
   workflows.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve

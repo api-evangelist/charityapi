@@ -1,9 +1,7 @@
 {
   "provider": "charityapi",
   "sources": [
-    "charityapi-autocomplete-api-openapi.yml",
-    "charityapi-organizations-api-openapi.yml",
-    "charityapi-public-charity-check-api-openapi.yml"
+    "_original/charityapi-openapi.yml"
   ],
   "outputs": [
     "charityapi-autocomplete-api-openapi.yml",
@@ -13,6 +11,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "charityapi-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "charityapi-autocomplete-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "charityapi-organizations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "charityapi-public-charity-check-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

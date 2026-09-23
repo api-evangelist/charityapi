@@ -1,0 +1,1 @@
+{"resource":"https://api.charityapi.org/mcp","scopes_supported":["api:read","api:write"],"authorization_servers":["https://api.charityapi.org"],"bearer_methods_supported":["header"]}

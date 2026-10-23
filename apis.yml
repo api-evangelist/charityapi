@@ -133,6 +133,8 @@ apis:
   - type: Spectral
     url: spectral/charityapi-spectral.yml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/charityapi/overview
   - type: Plans
     url: plans/charityapi-plans-pricing.yml
   - type: RateLimits

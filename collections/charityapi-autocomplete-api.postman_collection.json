@@ -1,268 +1,251 @@
 {
+  "info": {
+    "_postman_id": "bc8cba5a-01cd-4d4b-8bbc-db87ff8c8e6d",
+    "name": "Charity Autocomplete API",
+    "description": "REST API providing access to US nonprofit and charity data sourced from IRS filings. Supports lookup of organizations by EIN, public charity (501c3) verification checks, and name-based autocomplete for donation, fundraising, and compliance workflows.\n\nContact Support:\n Name: CharityAPI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:21:49.000Z",
+    "updatedAt": "2026-10-21T21:21:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bc8cba5a-01cd-4d4b-8bbc-db87ff8c8e6d"
+  },
   "item": [
     {
-      "id": "d3e9b9e6-21dc-432e-a43d-e3f0ed45f18f",
-      "name": "Autocomplete",
-      "description": {
-        "content": "Typeahead search across nonprofit organization names",
-        "type": "text/plain"
-      },
+      "name": "organizations",
       "item": [
         {
-          "id": "12b317fa-2924-4a80-9236-5a3e0c660f97",
-          "name": "Autocomplete organization names",
-          "request": {
-            "name": "Autocomplete organization names",
-            "description": {
-              "content": "Search the IRS Business Master File for organizations whose name matches the supplied term. Designed for typeahead UIs and supports typo tolerance. Available to paying accounts only.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "organizations",
-                "autocomplete",
-                ":term"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "term",
-                  "description": "(Required) Partial organization name to match."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "autocomplete",
+          "item": [
             {
-              "id": "dfc3b308-10df-4241-8534-4552aaa9c7c1",
-              "name": "Matching organization suggestions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizations",
-                    "autocomplete",
-                    ":term"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "term",
-                      "description": "(Required) Partial organization name to match."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "apikey",
-                    "value": "<API Key>"
+              "name": "{term}",
+              "item": [
+                {
+                  "name": "Autocomplete organization names",
+                  "id": "4a50ab99-a090-4b07-9375-bc403c40b9b3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"ein\": \"string\",\n    \"name\": \"string\",\n    \"ico\": \"string\",\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"group\": \"string\",\n    \"subsection\": \"string\",\n    \"affiliation\": \"string\",\n    \"classification\": \"string\",\n    \"ruling\": \"string\",\n    \"deductibility\": \"string\",\n    \"foundation\": \"string\",\n    \"activity\": \"string\",\n    \"organization\": \"string\",\n    \"status\": \"string\",\n    \"tax_period\": \"string\",\n    \"asset_cd\": \"string\",\n    \"income_cd\": \"string\",\n    \"filing_req_cd\": \"string\",\n    \"pf_filing_req_cd\": \"string\",\n    \"acct_pd\": \"string\",\n    \"asset_amt\": 1504,\n    \"income_amt\": 3375,\n    \"revenue_amt\": 8822,\n    \"ntee_cd\": \"string\",\n    \"sort_name\": \"string\"\n  },\n  {\n    \"ein\": \"string\",\n    \"name\": \"string\",\n    \"ico\": \"string\",\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"group\": \"string\",\n    \"subsection\": \"string\",\n    \"affiliation\": \"string\",\n    \"classification\": \"string\",\n    \"ruling\": \"string\",\n    \"deductibility\": \"string\",\n    \"foundation\": \"string\",\n    \"activity\": \"string\",\n    \"organization\": \"string\",\n    \"status\": \"string\",\n    \"tax_period\": \"string\",\n    \"asset_cd\": \"string\",\n    \"income_cd\": \"string\",\n    \"filing_req_cd\": \"string\",\n    \"pf_filing_req_cd\": \"string\",\n    \"acct_pd\": \"string\",\n    \"asset_amt\": 7696,\n    \"income_amt\": 4539,\n    \"revenue_amt\": 7494,\n    \"ntee_cd\": \"string\",\n    \"sort_name\": \"string\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c141b13c-4653-4edb-b0e1-98371b4c975d",
-              "name": "Missing or invalid API key",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizations",
-                    "autocomplete",
-                    ":term"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "term",
-                      "description": "(Required) Partial organization name to match."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/organizations/autocomplete/:term",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "organizations",
+                        "autocomplete",
+                        ":term"
+                      ],
+                      "variable": [
+                        {
+                          "id": "dee837ae-0a09-4a2f-847f-067441329329",
+                          "key": "term",
+                          "value": "<string>",
+                          "description": "(Required) Partial organization name to match."
+                        }
+                      ]
                     },
-                    "key": "apikey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "34cb21af-c14b-493f-8441-d49f4c78ca4a",
-              "name": "Endpoint requires a paid subscription",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizations",
-                    "autocomplete",
-                    ":term"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                    "description": "Search the IRS Business Master File for organizations whose name matches the supplied term. Designed for typeahead UIs and supports typo tolerance. Available to paying accounts only."
+                  },
+                  "response": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "term",
-                      "description": "(Required) Partial organization name to match."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                      "id": "8572b2f9-9f0b-45b6-8dca-51ab4f8df264",
+                      "name": "Matching organization suggestions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apikey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/organizations/autocomplete/:term",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "organizations",
+                            "autocomplete",
+                            ":term"
+                          ],
+                          "variable": [
+                            {
+                              "key": "term"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"ein\": \"<string>\",\n    \"name\": \"<string>\",\n    \"ico\": \"<string>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"group\": \"<string>\",\n    \"subsection\": \"<string>\",\n    \"affiliation\": \"<string>\",\n    \"classification\": \"<string>\",\n    \"ruling\": \"<string>\",\n    \"deductibility\": \"<string>\",\n    \"foundation\": \"<string>\",\n    \"activity\": \"<string>\",\n    \"organization\": \"<string>\",\n    \"status\": \"<string>\",\n    \"tax_period\": \"<string>\",\n    \"asset_cd\": \"<string>\",\n    \"income_cd\": \"<string>\",\n    \"filing_req_cd\": \"<string>\",\n    \"pf_filing_req_cd\": \"<string>\",\n    \"acct_pd\": \"<string>\",\n    \"asset_amt\": \"<integer>\",\n    \"income_amt\": \"<integer>\",\n    \"revenue_amt\": \"<integer>\",\n    \"ntee_cd\": \"<string>\",\n    \"sort_name\": \"<string>\"\n  },\n  {\n    \"ein\": \"<string>\",\n    \"name\": \"<string>\",\n    \"ico\": \"<string>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"group\": \"<string>\",\n    \"subsection\": \"<string>\",\n    \"affiliation\": \"<string>\",\n    \"classification\": \"<string>\",\n    \"ruling\": \"<string>\",\n    \"deductibility\": \"<string>\",\n    \"foundation\": \"<string>\",\n    \"activity\": \"<string>\",\n    \"organization\": \"<string>\",\n    \"status\": \"<string>\",\n    \"tax_period\": \"<string>\",\n    \"asset_cd\": \"<string>\",\n    \"income_cd\": \"<string>\",\n    \"filing_req_cd\": \"<string>\",\n    \"pf_filing_req_cd\": \"<string>\",\n    \"acct_pd\": \"<string>\",\n    \"asset_amt\": \"<integer>\",\n    \"income_amt\": \"<integer>\",\n    \"revenue_amt\": \"<integer>\",\n    \"ntee_cd\": \"<string>\",\n    \"sort_name\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-10-21T21:21:49.000Z",
+                      "updatedAt": "2026-10-21T21:21:49.000Z",
+                      "uid": "35240-8572b2f9-9f0b-45b6-8dca-51ab4f8df264"
                     },
-                    "key": "apikey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Payment Required",
-              "code": 402,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "95d563da-f56d-4bd3-84b8-e142f2b81bd8",
-              "name": "Rate limit exceeded",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizations",
-                    "autocomplete",
-                    ":term"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "term",
-                      "description": "(Required) Partial organization name to match."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                      "id": "a0dbb1ba-2ce9-494a-9950-ec86792f25d8",
+                      "name": "Missing or invalid API key",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apikey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/organizations/autocomplete/:term",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "organizations",
+                            "autocomplete",
+                            ":term"
+                          ],
+                          "variable": [
+                            {
+                              "key": "term"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:21:49.000Z",
+                      "updatedAt": "2026-10-21T21:21:49.000Z",
+                      "uid": "35240-a0dbb1ba-2ce9-494a-9950-ec86792f25d8"
                     },
-                    "key": "apikey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                    {
+                      "id": "5274cd9a-89fd-4d78-a872-9980bc74b6b5",
+                      "name": "Endpoint requires a paid subscription",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apikey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/organizations/autocomplete/:term",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "organizations",
+                            "autocomplete",
+                            ":term"
+                          ],
+                          "variable": [
+                            {
+                              "key": "term"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Payment Required",
+                      "code": 402,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:21:49.000Z",
+                      "updatedAt": "2026-10-21T21:21:49.000Z",
+                      "uid": "35240-5274cd9a-89fd-4d78-a872-9980bc74b6b5"
+                    },
+                    {
+                      "id": "c6c78f3d-09d9-4b5d-b4fc-f0e06a5f6ddb",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apikey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/organizations/autocomplete/:term",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "organizations",
+                            "autocomplete",
+                            ":term"
+                          ],
+                          "variable": [
+                            {
+                              "key": "term"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:21:49.000Z",
+                      "updatedAt": "2026-10-21T21:21:49.000Z",
+                      "uid": "35240-c6c78f3d-09d9-4b5d-b4fc-f0e06a5f6ddb"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:21:49.000Z",
+                  "updatedAt": "2026-10-21T21:21:49.000Z",
+                  "uid": "35240-4a50ab99-a090-4b07-9375-bc403c40b9b3"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "0d38cfbe-9a84-4201-8260-b7488df9d182",
+              "createdAt": "2026-10-21T21:21:49.000Z",
+              "updatedAt": "2026-10-21T21:21:49.000Z",
+              "uid": "35240-0d38cfbe-9a84-4201-8260-b7488df9d182"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "d0968cc7-bc9c-4834-bcd0-9efa0c347b48",
+          "createdAt": "2026-10-21T21:21:49.000Z",
+          "updatedAt": "2026-10-21T21:21:49.000Z",
+          "uid": "35240-d0968cc7-bc9c-4834-bcd0-9efa0c347b48"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.charityapi.org/api",
-      "key": "baseUrl"
+      "id": "8278b977-75fd-4aa5-8a86-311ce5dced6d",
+      "createdAt": "2026-10-21T21:21:49.000Z",
+      "updatedAt": "2026-10-21T21:21:49.000Z",
+      "uid": "35240-8278b977-75fd-4aa5-8a86-311ce5dced6d"
     }
   ],
   "auth": {
@@ -270,25 +253,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "apikey"
+        "value": "apikey",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "4bd48796-8f86-4f12-9d02-a911e0afb8a5",
-    "name": "Charity Autocomplete API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "REST API providing access to US nonprofit and charity data sourced from IRS filings. Supports lookup of organizations by EIN, public charity (501c3) verification checks, and name-based autocomplete for donation, fundraising, and compliance workflows.\n\nContact Support:\n Name: CharityAPI Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.charityapi.org/api"
     }
-  }
+  ]
 }
